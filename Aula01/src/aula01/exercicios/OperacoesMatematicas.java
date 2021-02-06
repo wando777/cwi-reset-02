@@ -27,7 +27,7 @@ public class OperacoesMatematicas {
 	}
 
 	public int getMultiplicacao() {
-		return num1 + num2;
+		return num1 * num2;
 	}
 
 	public int getRestoDaDivisao() {
@@ -39,6 +39,10 @@ public class OperacoesMatematicas {
 			return num1;
 		}
 		return num2;
+	}
+
+	public int getMenor() {
+		return num1 == getMaior() ? num2 : num1;
 	}
 
 }
