@@ -2,21 +2,18 @@ package models;
 
 import models.enums.Genero;
 
-public class Diretor {
+public class Ator {
 
 	private String nome;
 	private Integer idade;
-	private Integer numeroDeFilmesDirigidos;
+	private Integer numeroDeOscars;
 	private Genero genero;
 
-	public Diretor(String nome, Integer idade, Integer numeroDeFilmesDirigidos, Genero genero) {
+	public Ator(String nome, Integer idade, Integer numeroDeOscars, Genero genero) {
 		this.nome = nome;
 		this.idade = idade;
-		this.numeroDeFilmesDirigidos = numeroDeFilmesDirigidos;
+		this.numeroDeOscars = numeroDeOscars;
 		this.genero = genero;
-	}
-
-	public Diretor() {
 	}
 
 	public String getNome() {
@@ -35,12 +32,12 @@ public class Diretor {
 		this.idade = idade;
 	}
 
-	public Integer getNumeroDeFilmesDirigidos() {
-		return numeroDeFilmesDirigidos;
+	public Integer getNumeroDeOscars() {
+		return numeroDeOscars;
 	}
 
-	public void setNumeroDeFilmesDirigidos(Integer numeroDeFilmesDirigidos) {
-		this.numeroDeFilmesDirigidos = numeroDeFilmesDirigidos;
+	public void setNumeroDeOscars(Integer numeroDeOscars) {
+		this.numeroDeOscars = numeroDeOscars;
 	}
 
 	public Genero getGenero() {
