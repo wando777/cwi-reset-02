@@ -17,7 +17,7 @@ public class Filme {
 
 	public Filme(String nome, String descricao, Integer duracao, Integer anoLancamento, Integer notaAvaliacao,
 			Diretor diretor) {
-		if (notaAvaliacao <= NOTA_MINIMA || notaAvaliacao > NOTA_MAXIMA) {
+		if (notaAvaliacao < NOTA_MINIMA || notaAvaliacao > NOTA_MAXIMA) {
 			throw new NotaInvalidaException(
 					"A nota é inválida, ela deve estar entre " + NOTA_MINIMA + " e " + NOTA_MAXIMA);
 		}
