@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.NotaInvalidaException;
+
 public class Filme {
 
 	private String nome;
@@ -10,11 +12,20 @@ public class Filme {
 
 	private Diretor diretor;
 
-	public Filme(String nome, String descricao, Integer duracao, Integer anoLancamento, Diretor diretor) {
+	private static final int NOTA_MINIMA = 0;
+	private static final int NOTA_MAXIMA = 5;
+
+	public Filme(String nome, String descricao, Integer duracao, Integer anoLancamento, Integer notaAvaliacao,
+			Diretor diretor) {
+		if (notaAvaliacao <= NOTA_MINIMA || notaAvaliacao > NOTA_MAXIMA) {
+			throw new NotaInvalidaException(
+					"A nota é inválida, ela deve estar entre " + NOTA_MINIMA + " e " + NOTA_MAXIMA);
+		}
 		this.nome = nome;
 		this.descricao = descricao;
 		this.duracao = duracao;
 		this.anoLancamento = anoLancamento;
+		this.notaAvaliacao = notaAvaliacao;
 		this.diretor = diretor;
 	}
 
@@ -68,12 +79,10 @@ public class Filme {
 	public void setDiretor(Diretor diretor) {
 		this.diretor = diretor;
 	}
-	
+
 	public String reproduzirFilme() {
-		return "Nome do filme: " + nome + "\n" + 
-				"Descrição: " + descricao + "\n" +
-				"Duracão: " + duracao + "\n" +
-				"Diretor: " + diretor.getNome();
+		return "Nome do filme: " + nome + "\n" + "Descrição: " + descricao + "\n" + "Duracão: " + duracao + "\n"
+				+ "Nota: " + notaAvaliacao + "\n" + "Diretor: " + diretor.getNome();
 	}
 
 }
