@@ -1,0 +1,6 @@
+br/com/minha_casa_minha_desgraca/models/Endereco.class
+br/com/minha_casa_minha_desgraca/models/Imovel.class
+br/com/minha_casa_minha_desgraca/MinhaCasaMinhaDesgraca.class
+br/com/minha_casa_minha_desgraca/models/Beneficiario.class
+br/com/minha_casa_minha_desgraca/services/ImoveisParaFinanciamento.class
+br/com/minha_casa_minha_desgraca/services/PropostaFinanciamento.class
