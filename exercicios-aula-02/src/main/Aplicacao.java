@@ -13,8 +13,8 @@ public class Aplicacao {
 		// 10);
 		Diretor d1 = new Diretor("Carlos", 50, 10, Genero.MASCULINO);
 		Ator a1 = new Ator("Petter", 27, Genero.NAO_BINARIO, 7);
-		Filme f1 = new Filme("Lord of the rings", "The best movie made ever", 300, 2000, 5, d1);
-		Filme f2 = new Filme("Lord of the rings 2", "The best movie made ever", 300, 2000, 5, d1);
+		Filme f1 = new Filme("Lord of the rings", "The best movie ever made", 300, 2000, 5, d1);
+		Filme f2 = new Filme("Lord of the rings 2", "The best movie ever made", 300, 2000, 5, d1);
 
 		System.out.println(f1.reproduzirFilme());
 		System.out.println("-------x-------");
