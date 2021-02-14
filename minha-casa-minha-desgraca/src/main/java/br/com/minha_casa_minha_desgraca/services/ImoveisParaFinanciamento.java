@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.minha_casa_minha_desgraca.models.Imovel;
+import br.com.minha_casa_minha_desgraca.services.exception.valorInvalidoDeImovelException;
 
 public class ImoveisParaFinanciamento {
 
 	private List<Imovel> imoveis;
+
+	private static final Double VALOR_IMOVEL_MINIMO = 50000.00;
+	private static final Double VALOR_IMOVEL_MAXIMO = 1000000.00;
 
 	public ImoveisParaFinanciamento() {
 		imoveis = new ArrayList<Imovel>();
@@ -25,9 +29,14 @@ public class ImoveisParaFinanciamento {
 	 */
 	public void registrarImovel(Imovel imovel) {
 
-		// se "imovel" corresponder às regras, adicioná-lo à lista "imoveis" com o
-		// seguinte código:
-		// imoveis.add(imovel);
+		boolean condicaoParaRegistrar = imovel.getValor() >= VALOR_IMOVEL_MINIMO
+				&& imovel.getValor() <= VALOR_IMOVEL_MAXIMO;
+
+		if (!condicaoParaRegistrar) {
+			throw new valorInvalidoDeImovelException(
+					"Atenção, problema de registro! Imóveis com valor R$" + imovel.getValor() + "  não são aceitos.");
+		}
+		imoveis.add(imovel);
 	}
 
 	/**
@@ -35,17 +44,14 @@ public class ImoveisParaFinanciamento {
 	 * ao valor limite que foi informado.
 	 */
 	public List<Imovel> buscarOpcoes(double valorLimite) {
-
 		List<Imovel> opcoes = new ArrayList<Imovel>();
 
 		// percorre a lista de imóveis
 		for (Imovel imovel : imoveis) {
-
-			// se "imovel" corresponder às regras, adicioná-lo à lista de opcoes com o
-			// seguinte código:
-			// opcoes.add(imovel);
+			if (imovel.getValor() <= valorLimite) {
+				opcoes.add(imovel);
+			}
 		}
-
 		return opcoes;
 	}
 

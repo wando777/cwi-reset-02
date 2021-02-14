@@ -6,12 +6,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 import br.com.minha_casa_minha_desgraca.models.Beneficiario;
+import br.com.minha_casa_minha_desgraca.models.Endereco;
 import br.com.minha_casa_minha_desgraca.models.Imovel;
+import br.com.minha_casa_minha_desgraca.models.enums.UnidadeFederativa;
 import br.com.minha_casa_minha_desgraca.services.ImoveisParaFinanciamento;
 import br.com.minha_casa_minha_desgraca.services.PropostaFinanciamento;
 
 public class MinhaCasaMinhaDesgraca {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("\n ### Olá, seja bem vindo ao magnífico programa Minha Casa - Minha Desgraça ###\n");
@@ -23,6 +26,22 @@ public class MinhaCasaMinhaDesgraca {
 		 *
 		 * NÃO MODIFICAR ESTA CLASSE ANTES DESTA LINHA.
 		 */
+
+		/**
+		 * Endereços genéricos, afinal, as casas nsses lotes do governo são todas juntas
+		 * mesmo.
+		 */
+		Endereco e1 = new Endereco("Rua igual", "111", "Muito longe", "Genérica", UnidadeFederativa.PB);
+		Endereco e2 = new Endereco("Rua igual", "123", "Muito longe", "Genérica", UnidadeFederativa.RJ);
+		Endereco e3 = new Endereco("Rua igual", "321", "Muito longe", "Genérica", UnidadeFederativa.SP);
+
+		Imovel i1 = new Imovel(150000.00, e1);
+		Imovel i2 = new Imovel(500000.00, e2);
+		Imovel i3 = new Imovel(250000.00, e3);
+
+		opcoesParaFinanciamento.registrarImovel(i1);
+		opcoesParaFinanciamento.registrarImovel(i2);
+		opcoesParaFinanciamento.registrarImovel(i3);
 
 		/**
 		 * FIM
@@ -40,7 +59,7 @@ public class MinhaCasaMinhaDesgraca {
 		System.out.println("\nVamos lá, preciso de algumas respostas...\n");
 		Thread.sleep(1000);
 
-		System.out.println(" Qual é o teu nome?");
+		System.out.println(" 	Qual é o teu nome?");
 		String nomeBeneficiario = new Scanner(System.in).next();
 		Thread.sleep(500);
 
@@ -93,7 +112,8 @@ public class MinhaCasaMinhaDesgraca {
 
 		System.out.printf(
 				"\nHumm, certo %s. Você ganha %s e quer financiar um imóvel de %s, no estado %s, pagando em %d meses. Deixa eu ver se é possível...\n\n",
-				beneficiario.getNomeBeneficiario(), DecimalFormat.getCurrencyInstance().format(beneficiario.getSalarioBeneficiario()),
+				beneficiario.getNomeBeneficiario(),
+				DecimalFormat.getCurrencyInstance().format(beneficiario.getSalarioBeneficiario()),
 				DecimalFormat.getCurrencyInstance().format(imovelEscolhido.getValor()),
 				imovelEscolhido.getEndereco().getEstado(), mesesParaPagamento);
 		Thread.sleep(new Random().nextInt(4000) + 1000);

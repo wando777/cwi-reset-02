@@ -8,15 +8,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Imovel {
-	
+
 	private Double valor;
 	private Endereco endereco;
 
-	
+	public Imovel(Double valor, Endereco endereco) {
+		this.valor = valor;
+		this.endereco = endereco;
+	}
 
-	public Object apresentacao() {
-		// TODO Auto-generated method stub
-		return null;
+	public String apresentacao() {
+		return "Imóvel localizado no endereço " + endereco.toString() + " no valor de R$" + valor;
 	}
 
 }
