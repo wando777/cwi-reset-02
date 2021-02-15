@@ -7,7 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Imovel {
+public abstract class Imovel {
 
 	private Double valor;
 	private Endereco endereco;
@@ -18,7 +18,7 @@ public class Imovel {
 	}
 
 	public String apresentacao() {
-		return "Imóvel localizado no endereço " + endereco.toString() + " no valor de R$" + valor;
+		return "Imóvel localizado no endereço: " + endereco.toString() + " no valor de R$" + valor;
 	}
 
 }

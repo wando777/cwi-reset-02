@@ -45,11 +45,11 @@ public class PropostaFinanciamento {
 
 		if (excecao) {
 			if (imovel.getEndereco().getEstado() == UnidadeFederativa.SP
-					&& poderDeCompra >= PORCENTAGEM_PISO_PROPOSTA_SP * imovel.getValor() ) {
+					&& poderDeCompra >= PORCENTAGEM_PISO_PROPOSTA_SP * imovel.getValor()) {
 				imprimirPropostaAprovada();
-			} else if (poderDeCompra >= PORCENTAGEM_PISO_PROPOSTA_RJ * imovel.getValor() ) {
+			} else if (poderDeCompra >= PORCENTAGEM_PISO_PROPOSTA_RJ * imovel.getValor()) {
 				imprimirPropostaAprovada();
-			}else {
+			} else {
 				imprimirPropostaNegada();
 			}
 		} else if (poderDeCompra >= imovel.getValor() * PORCENTAGEM_PISO_PROPOSTA) {
@@ -71,8 +71,8 @@ public class PropostaFinanciamento {
 
 	@Override
 	public String toString() {
-		return "Beneficiario: " + beneficiario.getNomeBeneficiario() + "\n" + "Imovel: " + imovel.apresentacao() + "\n" + "Meses para pagamento: "
-				+ mesesParaPagamento;
+		return "Beneficiario: " + beneficiario.getNomeBeneficiario() + "\n" + "Imovel: " + imovel.apresentacao() + "\n"
+				+ "Meses para pagamento: " + mesesParaPagamento;
 	}
 
 }

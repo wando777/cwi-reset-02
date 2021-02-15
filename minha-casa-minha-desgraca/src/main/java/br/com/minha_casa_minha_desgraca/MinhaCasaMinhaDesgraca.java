@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import br.com.minha_casa_minha_desgraca.models.Apartamento;
 import br.com.minha_casa_minha_desgraca.models.Beneficiario;
+import br.com.minha_casa_minha_desgraca.models.Casa;
 import br.com.minha_casa_minha_desgraca.models.Endereco;
 import br.com.minha_casa_minha_desgraca.models.Imovel;
 import br.com.minha_casa_minha_desgraca.models.enums.UnidadeFederativa;
@@ -31,13 +33,13 @@ public class MinhaCasaMinhaDesgraca {
 		 * Endereços genéricos, afinal, as casas nsses lotes do governo são todas juntas
 		 * mesmo.
 		 */
-		Endereco e1 = new Endereco("Rua igual", "111", "Muito longe", "Genérica", UnidadeFederativa.PB);
-		Endereco e2 = new Endereco("Rua igual", "123", "Muito longe", "Genérica", UnidadeFederativa.RJ);
-		Endereco e3 = new Endereco("Rua igual", "321", "Muito longe", "Genérica", UnidadeFederativa.SP);
+		Endereco e1 = new Endereco("Igual", "111", "Muito longe", "Genérica", UnidadeFederativa.PB);
+		Endereco e2 = new Endereco("Idêntica", "123", "Muito longe", "Genérica", UnidadeFederativa.RJ);
+		Endereco e3 = new Endereco("Parecida", "321", "Muito longe", "Genérica", UnidadeFederativa.SP);
 
-		Imovel i1 = new Imovel(150000.00, e1);
-		Imovel i2 = new Imovel(500000.00, e2);
-		Imovel i3 = new Imovel(250000.00, e3);
+		Imovel i1 = new Casa(150000.00, e1, false);
+		Imovel i2 = new Apartamento(500000.00, e2, "Sétimo");
+		Imovel i3 = new Casa(250000.00, e3, true);
 
 		opcoesParaFinanciamento.registrarImovel(i1);
 		opcoesParaFinanciamento.registrarImovel(i2);
