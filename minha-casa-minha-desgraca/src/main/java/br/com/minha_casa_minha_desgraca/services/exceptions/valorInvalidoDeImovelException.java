@@ -1,4 +1,4 @@
-package br.com.minha_casa_minha_desgraca.services.exception;
+package br.com.minha_casa_minha_desgraca.services.exceptions;
 
 public class valorInvalidoDeImovelException extends RuntimeException {
 

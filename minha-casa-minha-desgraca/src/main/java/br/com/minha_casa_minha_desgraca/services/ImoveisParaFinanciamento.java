@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.minha_casa_minha_desgraca.models.Imovel;
-import br.com.minha_casa_minha_desgraca.services.exception.valorInvalidoDeImovelException;
+import br.com.minha_casa_minha_desgraca.services.exceptions.valorInvalidoDeImovelException;
 
 public class ImoveisParaFinanciamento {
 
