@@ -19,4 +19,9 @@ public class Ator extends Pessoa {
 		this.numeroDeOscars = numeroDeOscars;
 	}
 
+	@Override
+	public String toString() {
+		return "Ator: " + getNome() + "\n" + "Ganhou " + getNumeroDeOscars() + " Oscars";
+	}
+
 }

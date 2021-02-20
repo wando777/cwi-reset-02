@@ -18,4 +18,10 @@ public class Diretor extends Pessoa {
 	public void setNumeroDeFilmesDirigidos(Integer numeroDeFilmesDirigidos) {
 		this.numeroDeFilmesDirigidos = numeroDeFilmesDirigidos;
 	}
+
+	@Override
+	public String toString() {
+		return "Diretor: " + getNome() + "\n" + "Diirigiu " + getNumeroDeFilmesDirigidos() + " filmes";
+	}
+	
 }
