@@ -1,5 +1,7 @@
 package main;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import models.Ator;
@@ -11,13 +13,15 @@ import models.enums.Genero;
 public class Aplicacao {
 
 	public static void main(String[] args) {
+		
+		DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate dataNascimento = LocalDate.parse("15-06-1993", sdf);
 
-		// Diretor d1 = new Diretor(Input.leString("Digite o nome do diretor: "), 50,
-		// 10);
-		Diretor d1 = new Diretor("Carlos", 50, 10, Genero.MASCULINO);
-		Ator a1 = new Ator("Petter", 27, Genero.NAO_BINARIO, 7);
-		Ator a2 = new Ator("Luc", 24, Genero.MASCULINO, 5);
-		Ator a3 = new Ator("Sam", 29, Genero.MASCULINO, 9);
+//		Diretor d1 = new Diretor(Input.leString("Digite o nome do diretor: "), 50, 10);
+		Diretor d1 = new Diretor("Carlos", dataNascimento, 10, Genero.MASCULINO);
+		Ator a1 = new Ator("Petter", dataNascimento, Genero.NAO_BINARIO, 7);
+		Ator a2 = new Ator("Luc", dataNascimento, Genero.MASCULINO, 5);
+		Ator a3 = new Ator("Sam", dataNascimento, Genero.MASCULINO, 9);
 
 		List<Pessoa> elenco = List.of(a1, a2, a3);
 
@@ -32,7 +36,7 @@ public class Aplicacao {
 //		System.out.println("Diretor: " + "\n" + d1);
 //		System.out.println("-------x-------");
 //		System.out.println("Ator: " + "\n" + a1);
-		
+
 		System.out.println(f1.reproduzirFilme());
 
 	}

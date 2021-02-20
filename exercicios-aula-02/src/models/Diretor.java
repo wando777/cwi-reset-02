@@ -1,12 +1,14 @@
 package models;
 
+import java.time.LocalDate;
+
 import models.enums.Genero;
 
 public class Diretor extends Pessoa {
 
 	private Integer numeroDeFilmesDirigidos;
 
-	public Diretor(String nome, Integer idade, Integer numeroDeFilmesDirigidos, Genero genero) {
+	public Diretor(String nome, LocalDate idade, Integer numeroDeFilmesDirigidos, Genero genero) {
 		super(nome, idade, genero);
 		this.numeroDeFilmesDirigidos = numeroDeFilmesDirigidos;
 	}
