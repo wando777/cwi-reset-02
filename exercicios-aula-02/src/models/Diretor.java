@@ -21,7 +21,7 @@ public class Diretor extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Diretor: " + getNome() + "\n" + "Diirigiu " + getNumeroDeFilmesDirigidos() + " filmes";
+		return "Diretor: " + "\n" + super.toString() + "\n" + "Dirigiu " + getNumeroDeFilmesDirigidos() + " filmes";
 	}
-	
+
 }

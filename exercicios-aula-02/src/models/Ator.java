@@ -21,7 +21,7 @@ public class Ator extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Ator: " + getNome() + "\n" + "Ganhou " + getNumeroDeOscars() + " Oscars";
+		return super.toString() + "\n" + "Ganhou " + getNumeroDeOscars() + " Oscars";
 	}
 
 }
