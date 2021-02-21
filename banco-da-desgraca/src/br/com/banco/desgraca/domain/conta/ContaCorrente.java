@@ -8,7 +8,7 @@ import br.com.banco.desgraca.exception.valorMinimoParaSaqueException;
 
 public class ContaCorrente extends Conta {
 
-	private static final Double TAXA_TRANSFERENCIA_OUTROS_BANCOS = 0.1;
+	private static final Double TAXA_TRANSFERENCIA_OUTROS_BANCOS = 0.01;
 	private static final Integer DIVISOR_SAQUE = 5;
 
 	public ContaCorrente(InstituicaoBancaria instituicaoBancaria) {
@@ -38,6 +38,7 @@ public class ContaCorrente extends Conta {
 			setSaldo(getSaldo() - valor);
 		}
 		contaDestino.depositar(valor);
+		Transacao.mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
 	}
 
 	@Override

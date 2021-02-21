@@ -14,4 +14,10 @@ public class Transacao {
 				+ conta.getInstituicaoBancaria() + " número: " + conta.getNumeroConta());
 	}
 
+	public static void mensagemDeTransfererencia(Double valor, Conta conta, Conta destino) {
+		System.out.println("Transferiu R$" + valor + " da conta " + conta.getTipo() + " "
+				+ conta.getInstituicaoBancaria() + " número: " + conta.getNumeroConta() + " para " + destino.getTipo()
+				+ " " + destino.getInstituicaoBancaria() + " número: " + destino.getNumeroConta());
+	}
+
 }

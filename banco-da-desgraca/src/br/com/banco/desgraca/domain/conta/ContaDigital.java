@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.Transacao;
+import br.com.banco.desgraca.exception.instituicaoBancariaInvalidaException;
 import br.com.banco.desgraca.exception.valorMinimoParaSaqueException;
 
 public class ContaDigital extends Conta {
@@ -12,6 +13,11 @@ public class ContaDigital extends Conta {
 
 	public ContaDigital(InstituicaoBancaria instituicaoBancaria) {
 		super(instituicaoBancaria);
+		boolean validarInstituicao = instituicaoBancaria == InstituicaoBancaria.NUBANK ? true
+				: instituicaoBancaria == InstituicaoBancaria.ITAU;
+		if (!validarInstituicao) {
+			throw new instituicaoBancariaInvalidaException("Esta instituição não possui conta digital");
+		}
 		setTipo(TipoConta.DIGITAL);
 	}
 
@@ -30,6 +36,7 @@ public class ContaDigital extends Conta {
 		isSaldoPositivo(valor, getSaldo());
 		setSaldo(getSaldo() - valor);
 		contaDestino.depositar(valor);
+		Transacao.mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
 	}
 
 	@Override
