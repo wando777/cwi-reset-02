@@ -31,11 +31,12 @@ public class ContaCorrente extends Conta {
 	@Override
 	public void transferir(Double valor, ContaBancaria contaDestino) {
 		isSaldoPositivo(valor, getSaldo());
+		isMesmaConta(contaDestino);
 		if (contaDestino.getInstituicaoBancaria() != this.getInstituicaoBancaria()) {
 			Double taxa = valor * TAXA_TRANSFERENCIA_OUTROS_BANCOS;
 			isSaldoPositivo(valor + taxa, getSaldo());
 			setSaldo(getSaldo() - (valor + taxa));
-			System.out.println("Essa tranferência custou R$" + taxa + " de taxas.");
+			mensagemDeTaxa(taxa);
 		} else {
 			setSaldo(getSaldo() - valor);
 		}

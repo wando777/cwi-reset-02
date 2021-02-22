@@ -36,9 +36,10 @@ public class ContaDigital extends Conta {
 	@Override
 	public void transferir(Double valor, ContaBancaria contaDestino) {
 		isSaldoPositivo(valor, getSaldo());
+		isMesmaConta(contaDestino);
 		setSaldo(getSaldo() - valor);
-		contaDestino.depositar(valor);
 		mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
+		contaDestino.depositar(valor);
 		transacoes.add(new Transacao(this, TipoTransacao.TRANSFERENCIA, Data.getDataTransacao(), valor));
 	}
 

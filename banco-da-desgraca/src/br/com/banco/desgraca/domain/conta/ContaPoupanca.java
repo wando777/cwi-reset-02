@@ -37,13 +37,14 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public void transferir(Double valor, ContaBancaria contaDestino) {
+		isMesmaConta(contaDestino);
 		Double taxa = contaDestino.getInstituicaoBancaria() != this.getInstituicaoBancaria()
 				? valor * TAXA_TRANSFERENCIA_OUTROS_BANCOS
 				: valor * TAXA_TRANSFERENCIA_MESMO_BANCO;
 		isSaldoPositivo(valor + taxa, getSaldo());
 		setSaldo(getSaldo() - (valor + taxa));
-		System.out.println("Essa tranferência custou R$" + taxa + " de taxas.");
 		mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
+		mensagemDeTaxa(taxa);
 		transacoes.add(new Transacao(this, TipoTransacao.TRANSFERENCIA, Data.getDataTransacao(), valor));
 	}
 

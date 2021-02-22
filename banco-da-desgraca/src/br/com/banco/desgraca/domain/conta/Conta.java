@@ -10,6 +10,7 @@ import br.com.banco.desgraca.domain.enums.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.enums.TipoConta;
 import br.com.banco.desgraca.domain.enums.TipoTransacao;
 import br.com.banco.desgraca.exception.SaldoInsuficienteException;
+import br.com.banco.desgraca.exception.instituicaoBancariaInvalidaException;
 import br.com.banco.desgraca.utils.Data;
 import br.com.banco.desgraca.utils.Utils;
 
@@ -88,6 +89,11 @@ public abstract class Conta implements ContaBancaria {
 		transacoes.add(new Transacao(this, TipoTransacao.DEPOSITO, Data.getDataTransacao(), valor));
 	}
 
+//	public void receberTransferencia(Double valor) {
+//		saldo = saldo + valor;
+//		transacoes.add(new Transacao(this, TipoTransacao.DEPOSITO, Data.getDataTransacao(), valor));
+//	}
+
 	@Override
 	public void exibirExtrato(LocalDate inicio, LocalDate fim) {
 		transacoes.forEach((t) -> {
@@ -111,9 +117,16 @@ public abstract class Conta implements ContaBancaria {
 			throw new SaldoInsuficienteException("O saldo é insuficiente.");
 	}
 
+	public boolean isMesmaConta(ContaBancaria contaDestino) {
+		if (contaDestino.equals(this))
+			throw new instituicaoBancariaInvalidaException("Não pode transferir para a mesma conta.");
+		else
+			return false;
+	}
+
 	@Override
 	public String toString() {
-		return "Número da conta: " + numeroConta + ", Instituicao Bancaria: " + instituicaoBancaria.getDescricao()
+		return "\nNúmero da conta:" + numeroConta + ", Instituição Bancária: " + instituicaoBancaria.getDescricao()
 				+ ", Saldo: " + DecimalFormat.getCurrencyInstance().format(saldo);
 	}
 
@@ -135,9 +148,14 @@ public abstract class Conta implements ContaBancaria {
 
 	public static void mensagemDeTransfererencia(Double valor, Conta conta, Conta destino) {
 		System.out.println("Transferiu " + DecimalFormat.getCurrencyInstance().format(valor) + " da conta "
-				+ conta.getTipo() + " " + conta.getInstituicaoBancaria() + " número: " + conta.getNumeroConta()
-				+ " para " + destino.getTipo().getDescricao() + " " + destino.getInstituicaoBancaria().getDescricao()
-				+ " número: " + destino.getNumeroConta());
+				+ conta.getTipo().getDescricao() + " " + conta.getInstituicaoBancaria().getDescricao() + " número: "
+				+ conta.getNumeroConta() + " para " + destino.getTipo().getDescricao() + " "
+				+ destino.getInstituicaoBancaria().getDescricao() + " número: " + destino.getNumeroConta());
+	}
+
+	public static void mensagemDeTaxa(Double valor) {
+		System.out
+				.println("Essa tranferência custou " + DecimalFormat.getCurrencyInstance().format(valor) + " em taxas");
 	}
 
 }
