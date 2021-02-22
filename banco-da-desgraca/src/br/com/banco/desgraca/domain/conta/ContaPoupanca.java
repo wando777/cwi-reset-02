@@ -1,11 +1,12 @@
 package br.com.banco.desgraca.domain.conta;
 
-import java.time.LocalDate;
-
-import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.Transacao;
+import br.com.banco.desgraca.domain.enums.InstituicaoBancaria;
+import br.com.banco.desgraca.domain.enums.TipoConta;
+import br.com.banco.desgraca.domain.enums.TipoTransacao;
 import br.com.banco.desgraca.exception.instituicaoBancariaInvalidaException;
 import br.com.banco.desgraca.exception.valorMinimoParaSaqueException;
+import br.com.banco.desgraca.utils.Data;
 
 public class ContaPoupanca extends Conta {
 
@@ -30,7 +31,8 @@ public class ContaPoupanca extends Conta {
 		Double taxa = valor * TAXA_SAQUE;
 		isSaldoPositivo(valor + taxa, getSaldo());
 		setSaldo(getSaldo() - (valor + taxa));
-		Transacao.mensagemDeSaque(valor, this);
+		mensagemDeSaque(valor, this);
+		transacoes.add(new Transacao(this, TipoTransacao.SAQUE, Data.getDataTransacao(), valor));
 	}
 
 	@Override
@@ -41,13 +43,13 @@ public class ContaPoupanca extends Conta {
 		isSaldoPositivo(valor + taxa, getSaldo());
 		setSaldo(getSaldo() - (valor + taxa));
 		System.out.println("Essa tranferência custou R$" + taxa + " de taxas.");
-		Transacao.mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
+		mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
+		transacoes.add(new Transacao(this, TipoTransacao.TRANSFERENCIA, Data.getDataTransacao(), valor));
 	}
 
 	@Override
-	public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-		// TODO Auto-generated method stub
-
+	public String toString() {
+		return "Conta Poupança: " + super.toString();
 	}
 
 }

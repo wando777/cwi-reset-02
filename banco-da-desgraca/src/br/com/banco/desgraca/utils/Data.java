@@ -1,4 +1,4 @@
-package br.com.banco.desgraca;
+package br.com.banco.desgraca.utils;
 
 import java.time.LocalDate;
 
@@ -7,10 +7,9 @@ import java.time.LocalDate;
  */
 public final class Data {
 
-    private static LocalDate data;
+    private static LocalDate data = LocalDate.of(2020, 7, 1);
 
     private Data() {
-        data = LocalDate.of(2020, 7, 1);
     }
 
     /**

@@ -1,11 +1,12 @@
 package br.com.banco.desgraca.domain.conta;
 
-import java.time.LocalDate;
-
-import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.Transacao;
+import br.com.banco.desgraca.domain.enums.InstituicaoBancaria;
+import br.com.banco.desgraca.domain.enums.TipoConta;
+import br.com.banco.desgraca.domain.enums.TipoTransacao;
 import br.com.banco.desgraca.exception.instituicaoBancariaInvalidaException;
 import br.com.banco.desgraca.exception.valorMinimoParaSaqueException;
+import br.com.banco.desgraca.utils.Data;
 
 public class ContaDigital extends Conta {
 
@@ -28,7 +29,8 @@ public class ContaDigital extends Conta {
 		}
 		isSaldoPositivo(valor, getSaldo());
 		setSaldo(getSaldo() - valor);
-		Transacao.mensagemDeSaque(valor, this);
+		mensagemDeSaque(valor, this);
+		transacoes.add(new Transacao(this, TipoTransacao.SAQUE, Data.getDataTransacao(), valor));
 	}
 
 	@Override
@@ -36,18 +38,13 @@ public class ContaDigital extends Conta {
 		isSaldoPositivo(valor, getSaldo());
 		setSaldo(getSaldo() - valor);
 		contaDestino.depositar(valor);
-		Transacao.mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
-	}
-
-	@Override
-	public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-		// TODO Auto-generated method stub
-
+		mensagemDeTransfererencia(valor, this, (Conta) contaDestino);
+		transacoes.add(new Transacao(this, TipoTransacao.TRANSFERENCIA, Data.getDataTransacao(), valor));
 	}
 
 	@Override
 	public String toString() {
-		return "ContaDigital: " + super.toString();
+		return "Conta Digital: " + super.toString();
 	}
 
 }

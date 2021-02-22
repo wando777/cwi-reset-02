@@ -1,8 +1,8 @@
 package br.com.banco.desgraca.domain.conta;
 
-import br.com.banco.desgraca.domain.InstituicaoBancaria;
-
 import java.time.LocalDate;
+
+import br.com.banco.desgraca.domain.enums.InstituicaoBancaria;
 
 /**
  *    !!!   ATENÇÃO: ESTA CLASSE NÃO DEVE SER MODIFICADA   !!!
