@@ -44,6 +44,10 @@ public class BancoDaDesgraca {
 		cp1.exibirExtrato(LocalDate.of(2020, 7, 1), LocalDate.of(2021, 7, 7));
 		System.out.println(cp1);
 		System.out.println("*".repeat(77));
+		
+		//Testando exceptions
+//		cd1.sacar(9d);
+//		cp1.sacar(49d);
 
 	}
 }

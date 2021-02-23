@@ -11,6 +11,7 @@ import br.com.banco.desgraca.domain.enums.TipoConta;
 import br.com.banco.desgraca.domain.enums.TipoTransacao;
 import br.com.banco.desgraca.exception.SaldoInsuficienteException;
 import br.com.banco.desgraca.exception.instituicaoBancariaInvalidaException;
+import br.com.banco.desgraca.exception.valorMinimoParaSaqueException;
 import br.com.banco.desgraca.utils.Data;
 import br.com.banco.desgraca.utils.Utils;
 
@@ -93,6 +94,13 @@ public abstract class Conta implements ContaBancaria {
 //		saldo = saldo + valor;
 //		transacoes.add(new Transacao(this, TipoTransacao.DEPOSITO, Data.getDataTransacao(), valor));
 //	}
+	
+	public void isSaqueMinimo(Double valor, Integer saqueMinimo) {
+		if (valor < saqueMinimo) {
+			throw new valorMinimoParaSaqueException("O valor para saque deve ser superior a "
+					+ DecimalFormat.getCurrencyInstance().format(saqueMinimo));
+		}
+	}
 
 	@Override
 	public void exibirExtrato(LocalDate inicio, LocalDate fim) {

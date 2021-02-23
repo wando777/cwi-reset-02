@@ -5,7 +5,6 @@ import br.com.banco.desgraca.domain.enums.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.enums.TipoConta;
 import br.com.banco.desgraca.domain.enums.TipoTransacao;
 import br.com.banco.desgraca.exception.instituicaoBancariaInvalidaException;
-import br.com.banco.desgraca.exception.valorMinimoParaSaqueException;
 import br.com.banco.desgraca.utils.Data;
 
 public class ContaDigital extends Conta {
@@ -24,9 +23,7 @@ public class ContaDigital extends Conta {
 
 	@Override
 	public void sacar(Double valor) {
-		if (valor < SAQUE_MINIMO) {
-			throw new valorMinimoParaSaqueException("O valor para saque deve ser superior a R$" + SAQUE_MINIMO);
-		}
+		isSaqueMinimo(valor, SAQUE_MINIMO);
 		isSaldoPositivo(valor, getSaldo());
 		setSaldo(getSaldo() - valor);
 		mensagemDeSaque(valor, this);

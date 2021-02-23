@@ -1,5 +1,7 @@
 package br.com.banco.desgraca.domain.conta;
 
+import java.text.DecimalFormat;
+
 import br.com.banco.desgraca.domain.Transacao;
 import br.com.banco.desgraca.domain.enums.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.enums.TipoConta;
@@ -20,7 +22,8 @@ public class ContaCorrente extends Conta {
 	@Override
 	public void sacar(Double valor) {
 		if (valor >= 5 && valor % DIVISOR_SAQUE > 0) {
-			throw new valorMinimoParaSaqueException("Valor a ser sacado precisa ser múltiplo e maior que 5");
+			throw new valorMinimoParaSaqueException("Valor a ser sacado precisa ser múltiplo e maior que "
+					+ DecimalFormat.getCurrencyInstance().format(DIVISOR_SAQUE));
 		}
 		isSaldoPositivo(valor, getSaldo());
 		setSaldo(getSaldo() - valor);
