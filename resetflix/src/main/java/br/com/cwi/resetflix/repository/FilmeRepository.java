@@ -9,6 +9,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import br.com.cwi.resetflix.domain.Genero;
+import br.com.cwi.resetflix.entity.AtorEntity;
+import br.com.cwi.resetflix.entity.DiretorEntity;
 import br.com.cwi.resetflix.entity.FilmeEntity;
 
 @Repository
@@ -46,7 +48,22 @@ public class FilmeRepository {
 	}
 
 	public List<FilmeEntity> acharFilmesDiretor(Long id) {
-		// TODO Auto-generated method stub
+		List<FilmeEntity> filmesDiretores = new ArrayList<FilmeEntity>();
+		for (FilmeEntity filmeEntity : filmes) {
+			if (filmeEntity.getIdDiretor().equals(id)) {
+				filmesDiretores.add(filmeEntity);
+			}
+		}
+		return filmesDiretores;
+	}
+
+	public FilmeEntity acharFilmePorId(Long id) {
+		for (FilmeEntity filmeEntity : filmes) {
+			if (filmeEntity.getId().equals(id)) {
+				return filmeEntity;
+			}
+		}
 		return null;
 	}
+
 }

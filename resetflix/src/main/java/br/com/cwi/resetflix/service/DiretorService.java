@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.cwi.resetflix.entity.DiretorEntity;
 import br.com.cwi.resetflix.entity.FilmeEntity;
-import br.com.cwi.resetflix.mapper.ConsultarDetalhesAtorResponseMapper;
 import br.com.cwi.resetflix.mapper.ConsultarDetalhesDiretorResponseMapper;
 import br.com.cwi.resetflix.mapper.DiretorEntityMapper;
 import br.com.cwi.resetflix.mapper.DiretorResponseMapper;
@@ -43,7 +42,7 @@ public class DiretorService {
 	public ConsultarDetalhesDiretorResponse consultarDetalhesDiretor(Long id) {
 		DiretorEntity diretorSalvo = diretorRepository.acharDiretorPorId(id);
 		List<FilmeEntity> filmesDiretor = filmeRepository.acharFilmesDiretor(id);
-		return null;
+		return MAPPER_DETALHES_DIRETOR.mapear(diretorSalvo, filmesDiretor);
 	}
 
 }

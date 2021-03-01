@@ -6,58 +6,65 @@ import br.com.cwi.resetflix.domain.Genero;
 
 public class FilmeEntity {
 
-    private Long id;
-    private String nome;
-    private Genero genero;
-    private Long idDiretor;
-    private List<Long> idsAtores;
+	private Long id;
+	private String nome;
+	private Genero genero;
+	private Long idDiretor;
+	private List<Long> idsAtores;
 
-    public FilmeEntity(final Long id, final String nome, final Genero genero, final Long idDiretor,
-        final List<Long> idsAtores) {
-        this.id = id;
-        this.nome = nome;
-        this.genero = genero;
-        this.idDiretor = idDiretor;
-        this.idsAtores = idsAtores;
-    }
+	public FilmeEntity(final Long id, final String nome, final Genero genero, final Long idDiretor,
+			final List<Long> idsAtores) {
+		this.id = id;
+		this.nome = nome;
+		this.genero = genero;
+		this.idDiretor = idDiretor;
+		this.idsAtores = idsAtores;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public FilmeEntity(String nome, Genero genero, Long idDiretor, List<Long> idsAtores) {
+		this.nome = nome;
+		this.genero = genero;
+		this.idDiretor = idDiretor;
+		this.idsAtores = idsAtores;
+	}
 
-    public void setId(final Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setId(final Long id) {
+		this.id = id;
+	}
 
-    public void setNome(final String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Genero getGenero() {
-        return genero;
-    }
+	public void setNome(final String nome) {
+		this.nome = nome;
+	}
 
-    public void setGenero(final Genero genero) {
-        this.genero = genero;
-    }
+	public Genero getGenero() {
+		return genero;
+	}
 
-    public Long getIdDiretor() {
-        return idDiretor;
-    }
+	public void setGenero(final Genero genero) {
+		this.genero = genero;
+	}
 
-    public void setIdDiretor(final Long idDiretor) {
-        this.idDiretor = idDiretor;
-    }
+	public Long getIdDiretor() {
+		return idDiretor;
+	}
 
-    public List<Long> getIdsAtores() {
-        return idsAtores;
-    }
+	public void setIdDiretor(final Long idDiretor) {
+		this.idDiretor = idDiretor;
+	}
 
-    public void setIdsAtores(final List<Long> idsAtores) {
-        this.idsAtores = idsAtores;
-    }
+	public List<Long> getIdsAtores() {
+		return idsAtores;
+	}
+
+	public void setIdsAtores(final List<Long> idsAtores) {
+		this.idsAtores = idsAtores;
+	}
 }

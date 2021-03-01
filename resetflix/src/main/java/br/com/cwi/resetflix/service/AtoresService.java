@@ -19,29 +19,29 @@ import br.com.cwi.resetflix.response.ConsultarDetalhesAtorResponse;
 @Service
 public class AtoresService {
 
-    @Autowired
-    private AtoresRepository atoresRepository;
+	@Autowired
+	private AtoresRepository atoresRepository;
 
-    @Autowired
-    private FilmeRepository filmeRepository;
+	@Autowired
+	private FilmeRepository filmeRepository;
 
-    static AtoresResponseMapper MAPPER_RESPONSE = new AtoresResponseMapper();
-    static AtorEntityMapper MAPPER_ENTITY = new AtorEntityMapper();
-    static ConsultarDetalhesAtorResponseMapper MAPPER_DETALHES_ATOR = new ConsultarDetalhesAtorResponseMapper();
+	static AtoresResponseMapper MAPPER_RESPONSE = new AtoresResponseMapper();
+	static AtorEntityMapper MAPPER_ENTITY = new AtorEntityMapper();
+	static ConsultarDetalhesAtorResponseMapper MAPPER_DETALHES_ATOR = new ConsultarDetalhesAtorResponseMapper();
 
-    public List<AtoresResponse> getAtores() {
-        final List<AtorEntity> atores = atoresRepository.getAtores();
-        return MAPPER_RESPONSE.mapear(atores);
-    }
+	public List<AtoresResponse> getAtores() {
+		final List<AtorEntity> atores = atoresRepository.getAtores();
+		return MAPPER_RESPONSE.mapear(atores);
+	}
 
-    public Long criarAtor(final CriarAtorRequest request) {
-        AtorEntity atorSalvar = MAPPER_ENTITY.mapear(request);
-        return atoresRepository.criarAtor(atorSalvar);
-    }
+	public Long criarAtor(final CriarAtorRequest request) {
+		AtorEntity atorSalvar = MAPPER_ENTITY.mapear(request);
+		return atoresRepository.criarAtor(atorSalvar);
+	}
 
-    public ConsultarDetalhesAtorResponse consultarDetalhesAtor(final Long id) {
-        AtorEntity atorSalvo = atoresRepository.acharAtorPorId(id);
-        List<FilmeEntity> filmesAtor = filmeRepository.acharFilmesAtor(id);
-        return MAPPER_DETALHES_ATOR.mapear(atorSalvo, filmesAtor);
-    }
+	public ConsultarDetalhesAtorResponse consultarDetalhesAtor(final Long id) {
+		AtorEntity atorSalvo = atoresRepository.acharAtorPorId(id);
+		List<FilmeEntity> filmesAtor = filmeRepository.acharFilmesAtor(id);
+		return MAPPER_DETALHES_ATOR.mapear(atorSalvo, filmesAtor);
+	}
 }

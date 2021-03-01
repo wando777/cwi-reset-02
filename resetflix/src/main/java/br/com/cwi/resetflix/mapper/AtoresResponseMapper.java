@@ -8,7 +8,7 @@ import br.com.cwi.resetflix.response.AtoresResponse;
 
 public class AtoresResponseMapper {
 
-    public List<AtoresResponse> mapear(final List<AtorEntity> atores) {
+	public List<AtoresResponse> mapear(final List<AtorEntity> atores) {
         List<AtoresResponse> atoresResponses = new ArrayList<>();
 
         for(AtorEntity atorEntity : atores){
@@ -18,7 +18,6 @@ public class AtoresResponseMapper {
 
             atoresResponses.add(atorResponse);
         }
-
         return atoresResponses;
     }
 }
