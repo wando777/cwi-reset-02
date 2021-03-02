@@ -1,14 +1,15 @@
 package br.com.cwi.resetflix.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.cwi.resetflix.domain.Genero;
 import br.com.cwi.resetflix.entity.AtorEntity;
 import br.com.cwi.resetflix.entity.DiretorEntity;
 import br.com.cwi.resetflix.entity.FilmeEntity;
-import br.com.cwi.resetflix.mapper.ConsultarDetalhesAtorResponseMapper;
 import br.com.cwi.resetflix.mapper.ConsultarDetalhesFilmeResponseMapper;
 import br.com.cwi.resetflix.mapper.FilmeEntityMapper;
 import br.com.cwi.resetflix.mapper.FilmeResponseMapper;
@@ -35,8 +36,17 @@ public class FilmeService {
 	static FilmeResponseMapper MAPPER_RESPONSE = new FilmeResponseMapper();
 	static ConsultarDetalhesFilmeResponseMapper MAPPER_DETALHES_FILME = new ConsultarDetalhesFilmeResponseMapper();
 
-	public List<FilmeResponse> getFilmes() {
+	public List<FilmeResponse> getFilmes(Genero genero) {
 		final List<FilmeEntity> filmes = filmeRepository.getFilmes();
+		List<FilmeEntity> filmesComGenero = new ArrayList<FilmeEntity>();
+		if (genero != null) {
+			for (FilmeEntity filme : filmes) {
+				if (filme.getGenero().equals(genero)) {
+					filmesComGenero.add(filme);
+				}
+			}
+			return MAPPER_RESPONSE.mapear(filmesComGenero);
+		}
 		return MAPPER_RESPONSE.mapear(filmes);
 	}
 

@@ -29,7 +29,7 @@ public class FilmesController implements FilmesContract {
 	@GetMapping
 	public List<FilmeResponse> getFilmes(@RequestParam(value = "genero", required = false) final Genero genero) {
 		// TODO retornar apenas o gênero do filtro;
-		return filmeService.getFilmes();
+		return filmeService.getFilmes(genero);
 	}
 
 	@Override

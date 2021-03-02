@@ -1,16 +1,10 @@
 package br.com.cwi.resetflix.repository;
 
-import static java.util.Arrays.asList;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.cwi.resetflix.domain.Genero;
-import br.com.cwi.resetflix.entity.AtorEntity;
-import br.com.cwi.resetflix.entity.DiretorEntity;
 import br.com.cwi.resetflix.entity.FilmeEntity;
 
 @Repository

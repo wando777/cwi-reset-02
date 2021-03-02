@@ -10,27 +10,31 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FilmeEntity {
+public class SerieEntity {
 
 	private Long id;
 	private String nome;
 	private Genero genero;
-	private Long idDiretor;
+	private Integer temporadas;
+	private Integer episodios;
 	private List<Long> idsAtores;
 
-	public FilmeEntity(final Long id, final String nome, final Genero genero, final Long idDiretor,
-			final List<Long> idsAtores) {
+	public SerieEntity(Long id, String nome, Genero genero, Integer temporadas, Integer episodios,
+			List<Long> idsAtores) {
 		this.id = id;
 		this.nome = nome;
 		this.genero = genero;
-		this.idDiretor = idDiretor;
+		this.temporadas = temporadas;
+		this.episodios = episodios;
 		this.idsAtores = idsAtores;
 	}
 
-	public FilmeEntity(String nome, Genero genero, Long idDiretor, List<Long> idsAtores) {
+	public SerieEntity(final String nome, final Genero genero, final Integer temporadas, final Integer episodios,
+			final List<Long> idsAtores) {
 		this.nome = nome;
 		this.genero = genero;
-		this.idDiretor = idDiretor;
+		this.temporadas = temporadas;
+		this.episodios = episodios;
 		this.idsAtores = idsAtores;
 	}
 
@@ -50,7 +54,7 @@ public class FilmeEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FilmeEntity other = (FilmeEntity) obj;
+		SerieEntity other = (SerieEntity) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

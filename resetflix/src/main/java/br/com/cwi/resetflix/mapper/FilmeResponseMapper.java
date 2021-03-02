@@ -10,7 +10,6 @@ public class FilmeResponseMapper {
 
 	public List<FilmeResponse> mapear(final List<FilmeEntity> filmesAtor) {
 		List<FilmeResponse> responses = new ArrayList<>();
-
 		for (FilmeEntity filmeEntity : filmesAtor) {
 			responses.add(new FilmeResponse(filmeEntity.getId(), filmeEntity.getNome(),
 					filmeEntity.getGenero()));
