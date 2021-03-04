@@ -26,13 +26,12 @@ public class SeriesController implements SeriesContract{
 	@Override
 	@GetMapping
 	public List<SerieResponse> getSeries(@RequestParam(value = "genero", required = false) final Genero genero) {
-		return seriesService.getSeries();
+		return seriesService.getSeries(genero);
 	}
 
 	@Override
 	public ConsultarDetalhesSerieResponse getSerieById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return seriesService.getSeriesDetalhes(id);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class AtoresRepository {
 		return null;
 	}
 
-	public List<AtorEntity> listaDeFilmesPorAtor(final Long id) {
+	public List<AtorEntity> listaDeAtoresPorFilme(final Long id) {
 		List<AtorEntity> filmesAtor = new ArrayList<AtorEntity>();
 		for (AtorEntity ator : atores) {
 			for (Long idFilme : ator.getIdsFilmes()) {
@@ -48,4 +48,10 @@ public class AtoresRepository {
 		}
 		return filmesAtor;
 	}
+	
+	public List<AtorEntity> listaDeAtoresPorSerie(final Long id) {
+		//TODO encontrar atores por id da série
+		return null;
+	}
+	
 }

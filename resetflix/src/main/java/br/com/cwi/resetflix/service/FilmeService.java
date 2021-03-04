@@ -1,6 +1,5 @@
 package br.com.cwi.resetflix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +36,17 @@ public class FilmeService {
 	static ConsultarDetalhesFilmeResponseMapper MAPPER_DETALHES_FILME = new ConsultarDetalhesFilmeResponseMapper();
 
 	public List<FilmeResponse> getFilmes(Genero genero) {
-		final List<FilmeEntity> filmes = filmeRepository.getFilmes();
-		List<FilmeEntity> filmesComGenero = new ArrayList<FilmeEntity>();
-		if (genero != null) {
-			for (FilmeEntity filme : filmes) {
-				if (filme.getGenero().equals(genero)) {
-					filmesComGenero.add(filme);
-				}
-			}
-			return MAPPER_RESPONSE.mapear(filmesComGenero);
-		}
+		final List<FilmeEntity> filmes = filmeRepository.getPorGenero(genero);
+//		List<FilmeEntity> filmesComGenero = new ArrayList<FilmeEntity>();
+//		
+//		if (genero != null) {
+//			for (FilmeEntity filme : filmes) {
+//				if (filme.getGenero().equals(genero)) {
+//					filmesComGenero.add(filme);
+//				}
+//			}
+//			return MAPPER_RESPONSE.mapear(filmesComGenero);
+//		}
 		return MAPPER_RESPONSE.mapear(filmes);
 	}
 
@@ -58,7 +58,7 @@ public class FilmeService {
 	public ConsultarDetalhesFilmeResponse consultarDetalhesFilme(Long id) {
 		FilmeEntity filmeSalvo = filmeRepository.acharFilmePorId(id);
 		DiretorEntity diretor = diretorRepository.acharDiretorPorId(filmeSalvo.getIdDiretor());
-		List<AtorEntity> atores = atorRepository.listaDeFilmesPorAtor(id);
+		List<AtorEntity> atores = atorRepository.listaDeAtoresPorFilme(id);
 		return MAPPER_DETALHES_FILME.mapear(filmeSalvo, diretor, atores);
 	}
 

@@ -2,9 +2,11 @@ package br.com.cwi.resetflix.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.cwi.resetflix.domain.Genero;
 import br.com.cwi.resetflix.entity.FilmeEntity;
 
 @Repository
@@ -59,5 +61,15 @@ public class FilmeRepository {
 		}
 		return null;
 	}
+	
+	public List<FilmeEntity> getPorGenero(Genero genero) {
+        if (genero == null) {
+            return getFilmes();
+        } else {
+            return filmes.stream()
+            		.filter(filme -> filme.getGenero().equals(genero))
+            		.collect(Collectors.toList());
+        }
+    }
 
 }

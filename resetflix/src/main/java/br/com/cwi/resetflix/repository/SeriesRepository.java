@@ -2,9 +2,11 @@ package br.com.cwi.resetflix.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.cwi.resetflix.domain.Genero;
 import br.com.cwi.resetflix.entity.SerieEntity;
 
 @Repository
@@ -33,5 +35,15 @@ public class SeriesRepository {
 		}
 		return null;
 	}
+	
+	public List<SerieEntity> getPorGenero(Genero genero) {
+        if (genero == null) {
+            return getSeries();
+        } else {
+            return series.stream()
+            		.filter(serie -> serie.getGenero().equals(genero))
+            		.collect(Collectors.toList());
+        }
+    }
 
 }
