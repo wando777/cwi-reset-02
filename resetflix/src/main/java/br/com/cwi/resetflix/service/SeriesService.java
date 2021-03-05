@@ -42,8 +42,7 @@ public class SeriesService {
 
 	public ConsultarDetalhesSerieResponse getSeriesDetalhes(Long id) {
 		SerieEntity serieSalva = seriesRepository.acharSeriePorId(id);
-		//TODO lista de atores por série
-		List<AtorEntity> atores = atorRepository.listaDeAtoresPorFilme(id);
+		List<AtorEntity> atores = atorRepository.listaDeAtoresPorSerie(id);
 		return MAPPER_DETALHES_FILME.mapear(serieSalva, atores);
 	}
 	

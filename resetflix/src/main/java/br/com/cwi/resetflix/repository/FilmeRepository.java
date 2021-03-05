@@ -61,15 +61,13 @@ public class FilmeRepository {
 		}
 		return null;
 	}
-	
+
 	public List<FilmeEntity> getPorGenero(Genero genero) {
-        if (genero == null) {
-            return getFilmes();
-        } else {
-            return filmes.stream()
-            		.filter(filme -> filme.getGenero().equals(genero))
-            		.collect(Collectors.toList());
-        }
-    }
+		if (genero == null) {
+			return getFilmes();
+		} else {
+			return filmes.stream().filter(filme -> filme.getGenero().equals(genero)).collect(Collectors.toList());
+		}
+	}
 
 }

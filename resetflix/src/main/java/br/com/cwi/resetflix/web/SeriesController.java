@@ -30,6 +30,7 @@ public class SeriesController implements SeriesContract{
 	}
 
 	@Override
+	@GetMapping("/{id}")
 	public ConsultarDetalhesSerieResponse getSerieById(Long id) {
 		return seriesService.getSeriesDetalhes(id);
 	}

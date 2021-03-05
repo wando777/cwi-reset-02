@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cwi.resetflix.domain.Genero;
+import br.com.cwi.resetflix.entity.FilmeEntity;
+import br.com.cwi.resetflix.repository.UserRepository;
 import br.com.cwi.resetflix.request.CriarFilmeRequest;
 import br.com.cwi.resetflix.response.ConsultarDetalhesFilmeResponse;
 import br.com.cwi.resetflix.response.FilmeResponse;
@@ -24,6 +26,9 @@ public class FilmesController implements FilmesContract {
 
 	@Autowired
 	private FilmeService filmeService;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	@GetMapping
@@ -47,13 +52,18 @@ public class FilmesController implements FilmesContract {
 	@Override
 	@GetMapping("/recomendacoes")
 	public List<FilmeResponse> getRecomendacoesFilmes() {
-		// TODO realizar chamada
 		return Collections.emptyList();
 	}
 
 	@Override
 	@PostMapping("/{id}/assistir")
 	public void assistirFilme(@PathVariable("id") final Long id) {
-		// TODO realizar chamada
+		filmeService.assistirFilme(id);
 	}
+	
+	@GetMapping("/filmesassistidos")
+	public List<FilmeEntity> filmesassistidos(){
+		return userRepository.filmesAssistidos();
+	}
+	
 }

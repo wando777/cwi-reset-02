@@ -2,13 +2,18 @@ package br.com.cwi.resetflix.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.cwi.resetflix.entity.AtorEntity;
 
 @Repository
 public class AtoresRepository {
+
+	@Autowired
+	private FilmeRepository filmeRepository;
 
 	static List<AtorEntity> atores = new ArrayList<>();
 	static Long contadorIds = 1l;
@@ -41,17 +46,16 @@ public class AtoresRepository {
 		List<AtorEntity> filmesAtor = new ArrayList<AtorEntity>();
 		for (AtorEntity ator : atores) {
 			for (Long idFilme : ator.getIdsFilmes()) {
-				if (idFilme.equals(id)) {
+				if (idFilme.equals(id) && filmeRepository.acharFilmePorId(id).getIdsAtores().contains(ator.getId())) {
 					filmesAtor.add(ator);
 				}
 			}
 		}
 		return filmesAtor;
 	}
-	
+
 	public List<AtorEntity> listaDeAtoresPorSerie(final Long id) {
-		//TODO encontrar atores por id da série
-		return null;
+		return atores.stream().filter(ator -> ator.getIdsSeries().contains(id)).collect(Collectors.toList());
 	}
-	
+
 }
