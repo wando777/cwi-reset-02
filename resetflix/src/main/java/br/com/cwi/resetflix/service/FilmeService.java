@@ -31,7 +31,7 @@ public class FilmeService {
 
 	@Autowired
 	private AtoresRepository atorRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -70,6 +70,12 @@ public class FilmeService {
 	public void assistirFilme(final Long id) {
 		FilmeEntity filmeSalvo = filmeRepository.acharFilmePorId(id);
 		userRepository.assistirFilme(filmeSalvo);
+	}
+
+	public Genero generoRecomendado() {
+		//TODO O retorno final deve ser um filme, assim:
+		//Pegar o genero recomendado e iterar na lista de filmes;
+		return userRepository.getGeneroRecomendado();
 	}
 
 }

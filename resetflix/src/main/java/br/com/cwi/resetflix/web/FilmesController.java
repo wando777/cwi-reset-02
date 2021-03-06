@@ -66,4 +66,10 @@ public class FilmesController implements FilmesContract {
 		return userRepository.filmesAssistidos();
 	}
 	
+	@Override
+	@GetMapping("/recomendacoesgenero")
+	public Genero getRecomendacoesGenero() {
+		return filmeService.generoRecomendado();
+	}
+	
 }

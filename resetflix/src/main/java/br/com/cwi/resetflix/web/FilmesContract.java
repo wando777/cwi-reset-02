@@ -3,13 +3,9 @@ package br.com.cwi.resetflix.web;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.cwi.resetflix.domain.Genero;
-import br.com.cwi.resetflix.request.CriarAtorRequest;
 import br.com.cwi.resetflix.request.CriarFilmeRequest;
-import br.com.cwi.resetflix.response.AtoresResponse;
-import br.com.cwi.resetflix.response.ConsultarDetalhesAtorResponse;
 import br.com.cwi.resetflix.response.ConsultarDetalhesFilmeResponse;
 import br.com.cwi.resetflix.response.FilmeResponse;
 import io.swagger.annotations.ApiOperation;
@@ -33,4 +29,6 @@ public interface FilmesContract {
 
     @ApiOperation(value = "Assistir filme.", notes = "Assiste um determinado filme.")
     public void assistirFilme(@ApiParam("id") final Long id);
+
+	Genero getRecomendacoesGenero();
 }
